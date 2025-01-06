@@ -20,5 +20,8 @@ Install Flask
 
 Run app and go to the given http port on your browser
 ```
-    flask --app app run                                                       ─╯
+    flask --app app run
 ```
+
+Already prepared ID's for testing you should type `1, 2, 3` or show the camera this already created QR codes:
+
