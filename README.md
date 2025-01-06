@@ -23,8 +23,6 @@ Run app and go to the given http port on your browser
     flask --app app run
 ```
 
-Already prepared ID's for testing you should type `1, 2, 3` or show the camera this already created QR codes:
+Already prepared ID's for testing you should type `1, 2` or show the camera that already created QR codes in QR_images folder.
 
-![ID 1](./QR%20images/ID1.png)
-![ID 2](./QR%20images/ID2.png)
 
