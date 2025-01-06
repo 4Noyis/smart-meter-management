@@ -25,3 +25,6 @@ Run app and go to the given http port on your browser
 
 Already prepared ID's for testing you should type `1, 2, 3` or show the camera this already created QR codes:
 
+![ID 1](file:///Users/berenalp/Downloads/ID1.png)
+![ID 2](file:///Users/berenalp/Downloads/ID2.png)
+
