@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <title>Meter Management</title>
+</head>
+<body class"bg-light">
+    <div class="container my-5">
+        <div class="header bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Meter Management</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Homepage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/add">Add</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/remove">Delete</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <main class="container py-5 text-center">
+            <div class="section mb-5 my-5">
+                <h2 class="mb-4">Meter Information</h2>
+            
+                <form method="POST" class="row g-3">
+                    <input type="hidden" name="form_type" value="search">
+                    <div class="col-sm-12 col-md-12">
+                        <input placeholder="ID" type="text" name="id_search" class="form-control" required>
+                    </div>
+                    <div class="col-12 text-center mt-3">
+                        <input type="submit" value="search" class="btn btn-primary w-100">
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-12">
+                        <button role="button" class="button-name" type="button" id="btn-scan-qr">Scan QR Code</button>
+                    </div>
+                    <canvas hidden id="qr-canvas"></canvas>
+                    
+                </form>    
+                <div id="qr-result" hidden>
+                    <b>ID:</b> <span id="outputData"></span>
+                </div>       
+            </div>
+            
+            
+            <div class="section mb-5">
+                <h2 class="mb-4">Measurements</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center shadow-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Water</th>
+                                <th>Warming</th>
+                                <th>Electricity</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% for row in rows %}
+                            <tr>
+                                <td>{{row.su}}</td>
+                                <td>{{row.dogalgaz}}</td>
+                                <td>{{row.elektrik}}</td>
+                                <td>{{row.date}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="mb-4">New Measurements</h2>
+                <h3>Meter ID: {% block id %} {{id_search}} {% endblock id %} </h3>
+                <form method="POST" class="row g-3">
+                    <input type="hidden" name ="form_type" value="add">
+                    <input type="hidden" name="id_search" value="{{ id_search }}">
+                    <div class="col-sm-12 col-md-3">
+                        <input placeholder="Water" type="number" step="0.01" name="su" class="form-control" required>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <input placeholder="Natural Gas" type="number" step="0.01" name="dogalgaz" class="form-control" required>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <input placeholder="Electricity" type="number" step="0.01" name="elektrik" class="form-control" required>
+                    </div>
+                    <div class="col-12 text-center mt-3">
+                        <input type="submit" value="Submit" class="btn btn-success w-100">
+                    </div>
+                    
+                </form>
+            </div>
+        </main>
+        
+
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+    <script src="/static/qrCodeScanner.js"></script>
+    
+</body>
+</html>
+
+

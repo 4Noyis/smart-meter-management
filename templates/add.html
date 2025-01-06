@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}New Apartment{% endblock title %}
+
+{% block main %}
+<main class="container py-5 text-center">
+    <div class="section mb-5 my-5">
+        <h2 class="mb-4"> Add New Building And Apartment</h2>
+    
+        <form method="POST" class="row g-3">
+            <!--   <input type="hidden" name="form_type" value="search">  -->
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="District" type="text" name="ilce_add" class="form-control" required>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="Building Name" type="text" name="apt_add" class="form-control" required>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="Block No" type="text" name="blok_add" class="form-control" required>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="Apartment No" type="text" name="daire_add" class="form-control" required>
+            </div>
+            <div class="col-12 text-center mt-3">
+                <input type="submit" value="Add" class="btn btn-success w-100">
+            </div>
+            
+        </form>      
+    </div>
+</main>
+{% endblock main %}

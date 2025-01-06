@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Remove Bulding and Apartment{% endblock title %}
+
+{% block main %}
+<main class="container py-5 text-center">
+    <div class="section mb-5 my-5">
+        <h2 class="mb-4"> Remove Building and Apartment</h2>
+    
+        <form method="POST" class="row g-3" onsubmit="return confirmDelete();">
+            <!--   <input type="hidden" name="form_type" value="search">  -->
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="District" type="text" name="ilce_remove" class="form-control" required>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="Building Name" type="text" name="apt_remove" class="form-control" required>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="Block No" type="text" name="blok_remove" class="form-control" required>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <input placeholder="Apartment No" type="text" name="daire_remove" class="form-control" required>
+            </div>
+            <div class="col-12 text-center mt-3">
+                <input type="submit" value="Remove" class="btn btn-danger w-100">
+            </div>
+            
+        </form>
+        <script>
+            function confirmDelete(){
+                return confirm("Are you sure want to delete this data?")
+            }
+        </script>      
+    </div>
+</main>
+{% endblock main %}
